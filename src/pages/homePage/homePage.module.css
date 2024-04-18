@@ -1,0 +1,13 @@
+.HomePage {
+  height: 100vh;
+  gap: 15vw;
+  .containerOne {
+    width: 50vw;
+  }
+  .headingTxt {
+    width: 50vw;
+  }
+  .imgContainer {
+    width: 60vw;
+  }
+}

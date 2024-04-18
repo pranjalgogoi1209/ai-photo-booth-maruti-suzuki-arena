@@ -1,0 +1,19 @@
+.Loader {
+  width: 60vw;
+  height: 10vw;
+  display: inline-block;
+  position: relative;
+  border: 0.6vw solid #000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1%;
+  gap: 1%;
+  margin: auto;
+  .line {
+    background-color: #000;
+    height: 90%;
+    width: 1.7%;
+    animation: animloader 1s linear infinite;
+  }
+}

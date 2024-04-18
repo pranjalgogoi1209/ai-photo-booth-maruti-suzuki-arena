@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "SilverForte";
+  src: url("./../public/Silver\ Forte\ GrungeDEMO.ttf") format("truetype");
+}
+@font-face {
+  font-family: "GothamBlack";
+  src: url("./../public/Gotham-Black.otf") format("truetype");
+}
+
+.silverForteFont {
+  font-family: "SilverForte", sans-serif;
+}
+
+.gothamBlack {
+  font-family: "GothamBlack", sans-serif;
+  color: #000;
+}
+
+:root {
+  --themeColor1: #59c7d6;
+  --themeColor2: #a2c23c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: 1px solid #000;
+  background-image: url("./../src/assets/bg.png");
+  background-position: center;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  width: 100vw;
+  height: 100vh;
+  /* max-height: 100vh; */
+  min-width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1 {
+  color: #fff;
+  font-size: 7vw;
+  text-align: center;
+  line-height: 10vw;
+  font-family: "SilverForte", sans-serif;
+}
+
+a {
+  /* color: #646cff; */
+  text-decoration: none;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: linear-gradient(to bottom, #a4cf65, #a2c23c);
+  padding: 2vw 10vw;
+  border-radius: 10vw;
+  font-size: 6vw;
+  font-family: "GothamBlack", sans-serif;
+  cursor: pointer;
+  color: #000;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}

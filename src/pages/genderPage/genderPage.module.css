@@ -1,0 +1,15 @@
+.GenderPage {
+  margin-top: 10vw;
+  gap: 15vw;
+
+  .selectGenderTxt {
+    width: 50vw;
+  }
+
+  .genderBtn {
+    gap: 5vw;
+    .femaleBtn {
+      width: 60vw;
+    }
+  }
+}
