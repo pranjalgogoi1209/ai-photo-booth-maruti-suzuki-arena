@@ -1,6 +1,6 @@
 import React, { useState, CSSProperties } from "react";
 import styles from "./email.module.css";
-
+import axios from "axios";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { SyncLoader } from "react-spinners";
 
@@ -16,7 +16,7 @@ import { db } from "../../config/firebase";
 import "react-simple-keyboard/build/css/index.css";
 import Keyboard from "react-simple-keyboard";
 
-export default function Email({ setShowEmail, videoUrl, filename, gender }) {
+export default function Email({ setShowEmail, url }) {
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState();
   const [keyboardLayout, setKeyboardLayout] = useState("default");
@@ -39,7 +39,7 @@ export default function Email({ setShowEmail, videoUrl, filename, gender }) {
   };
 
   // send email to firebase
-  const sendEmail = async () => {
+  /*  const sendEmail = async () => {
     // timestamp
     const timestamp = Date.now();
 
@@ -52,7 +52,7 @@ export default function Email({ setShowEmail, videoUrl, filename, gender }) {
       timestamp: timestamp,
       email: userEmail,
     });
-  };
+  }; */
 
   // handle submit
   const handleSubmit = () => {
@@ -70,6 +70,28 @@ export default function Email({ setShowEmail, videoUrl, filename, gender }) {
       }
     } else {
       toast.error("Please wait...");
+    }
+  };
+
+  const sendEmail = () => {
+    try {
+      axios
+        .post(
+          "https://adp24companyday.com/aiphotobooth/aiphotobooth_comiccon/emailer/index.php",
+          {
+            url: url,
+            email: userEmail,
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      navigate("/output");
+    } catch (error) {
+      console.error("Error occurred during axios request:", error);
     }
   };
 

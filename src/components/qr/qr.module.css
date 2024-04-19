@@ -31,7 +31,8 @@
 
     .qrCode {
       /* border: 1px solid #000; */
-      width: 40vw;
+      width: 30vw;
+      height: 30vw;
       margin: 0;
       padding: 0;
     }

@@ -72,7 +72,7 @@ export default function OutputPage({ generatedImg, url, setUrl }) {
       {showQr && <Qr url={url} setShowQr={setShowQr} />}
 
       {/* email */}
-      {showEmail && <Email setShowEmail={setShowEmail} />}
+      {showEmail && <Email setShowEmail={setShowEmail} url={url} />}
     </div>
   );
 }
