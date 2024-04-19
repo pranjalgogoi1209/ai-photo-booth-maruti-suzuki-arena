@@ -1,5 +1,4 @@
-.Qr {
-  /* border: 1px solid #fff; */
+.Email {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -14,26 +13,32 @@
   z-index: 100;
   .container {
     width: 80%;
-    height: 55%;
+    height: 70vw;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10vw;
+    justify-content: center;
+    gap: 5vw;
     position: relative;
 
-    .heading {
-      /* border: 1px solid #000; */
-      color: #000;
-      font-size: 6vw;
+    .input {
+      border: 0;
+      border: 0.2vw solid var(--themeColor1);
+      outline: 0;
+      padding: 2vw 4vw;
+      width: 80%;
+      height: 10vw;
+      font-size: 4vw;
+      font-weight: 600;
     }
 
-    .qrCode {
-      /* border: 1px solid #000; */
-      width: 40vw;
-      margin: 0;
-      padding: 0;
+    .btn {
+      font-size: 5vw;
+      padding: 1.5vw 7vw;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .close {

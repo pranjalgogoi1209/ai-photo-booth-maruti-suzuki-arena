@@ -28,7 +28,6 @@
 }
 
 body {
-  border: 1px solid #000;
   background-image: url("./../src/assets/bg.png");
   background-position: center;
   background-size: cover;
@@ -68,7 +67,7 @@ img {
 button {
   border: none;
   outline: none;
-  background: linear-gradient(to bottom, #a4cf65, #a2c23c);
+  background-color: var(--themeColor1);
   padding: 2vw 10vw;
   border-radius: 10vw;
   font-size: 6vw;

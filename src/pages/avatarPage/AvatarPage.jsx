@@ -23,10 +23,9 @@ export default function AvatarPage({
 }) {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState();
+  const [originalImg, setOriginalImg] = useState();
   const [selectedImageIndex, setSelectedImageIndex] = useState();
   const [cards, setCards] = useState();
-
-  console.log("selectedImg =>", selectedImage);
 
   gender &&
     useEffect(() => {
@@ -49,11 +48,13 @@ export default function AvatarPage({
   // filtering card image with actual image
   const filterOriginalImg = index => {
     if (gender.toLowerCase() === "female") {
+      console.log("female hai");
       const filteredActualImgArr = femaleOriginalImagesArr.filter(
         (actualImg, ActualIndex) => ActualIndex === index
       );
       return filteredActualImgArr[0];
     } else if (gender.toLowerCase() === "male") {
+      console.log("male hai");
       const filteredActualImgArr = maleOriginalImagesArr.filter(
         (actualImg, ActualIndex) => ActualIndex === index
       );
@@ -82,24 +83,34 @@ export default function AvatarPage({
   // submitting the selected image and post request to api
   const handleSubmit = () => {
     // console.log("submitting selected avatar");
-    setGeneratedImg("");
-    if (selectedImage && capturedImg) {
-      axios
-        .post("https://29a3-103-17-110-127.ngrok-free.app/rec", {
-          image: capturedImg.split(",")[1],
-          choice: selectedImage.split(",")[1],
-        })
-        .then(function (response) {
-          console.log(response);
-          setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
 
-          // image uploading on server
-          getUrl(response.data.result);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      navigate("/output");
+    setGeneratedImg("");
+    if (capturedImg) {
+      base64(originalImg, base64Data => {
+        // console.log("Base64 data:", base64Data);
+        setSelectedImage(base64Data);
+
+        try {
+          axios
+            .post("https://29a3-103-17-110-127.ngrok-free.app/rec", {
+              image: capturedImg.split(",")[1],
+              choice: base64Data.split(",")[1],
+            })
+            .then(function (response) {
+              console.log(response);
+              setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
+
+              // image uploading on server
+              getUrl(response.data.result);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          navigate("/output");
+        } catch (error) {
+          console.error("Error occurred during axios request:", error);
+        }
+      });
     } else {
       toast.error(
         "Please select an image or capture your photo again...",
@@ -123,11 +134,7 @@ export default function AvatarPage({
               setSelectedImageIndex(index);
               /* setSelectedImage(filterOriginalImg(index)); */
               const originalImg = filterOriginalImg(index);
-
-              base64(originalImg, base64Data => {
-                console.log("Base64 data:", base64Data);
-                setSelectedImage(base64Data);
-              });
+              setOriginalImg(originalImg);
             }}
           >
             <div className={styles.parent}>

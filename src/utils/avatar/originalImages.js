@@ -23,9 +23,9 @@ export const maleOriginalImagesArr = [
 ];
 
 export const femaleOriginalImagesArr = [
-  maleOriginalImg01,
-  maleOriginalImg02,
-  maleOriginalImg03,
-  maleOriginalImg04,
-  maleOriginalImg05,
+  femaleOriginalImg01,
+  femaleOriginalImg02,
+  femaleOriginalImg03,
+  femaleOriginalImg04,
+  femaleOriginalImg05,
 ];
