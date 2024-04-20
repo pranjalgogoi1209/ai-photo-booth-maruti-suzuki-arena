@@ -92,7 +92,7 @@ export default function AvatarPage({
 
         try {
           axios
-            .post("https://b254-103-17-110-127.ngrok-free.app/rec", {
+            .post("https://h.ngrok.dev/rec", {
               image: capturedImg.split(",")[1],
               choice: base64Data.split(",")[1],
             })
